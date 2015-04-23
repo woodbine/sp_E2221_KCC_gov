@@ -25,9 +25,14 @@ html = urllib2.urlopen(url)
 soup = BeautifulSoup(html)
 
 # find all entries with the required class
-links = soup.findAll('a', href=True)
+headers = soup.findAll('h3')
 
-for link in links:
+for header in headers:
+	title = header.text
+	url = header.next_element.get("href")
+	print title
+	print url
+	'''
 	url = link['href']
 	if '.csv' in url:
 		print url
@@ -44,3 +49,4 @@ for link in links:
 		todays_date = str(datetime.now())
 		scraperwiki.sqlite.save(unique_keys=['l'], data={"l": url, "f": filename, "d": todays_date })
 		print filename
+	'''
