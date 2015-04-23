@@ -30,7 +30,7 @@ headers = block.findAll('h3')
 
 for header in headers:
 	title = header.text
-	ns = find_next_sibling('p')
+	ns = header.find_next_sibling('p')
 	print ns
 	'''
 	url = block.header.next_element.next_element.get("href")
