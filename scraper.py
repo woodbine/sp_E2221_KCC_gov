@@ -40,8 +40,8 @@ for header in headers:
 			parsed_link = parsed_link._replace(path=urllib.quote(parsed_link.path))
 			encoded_link = parsed_link.geturl()
 			# create the right strings for the new filename
-			csvYr = title.split(' ')[2]
-			csvMth = title.split(' ')[1][:3]
+			csvYr = title.split(' ')[1]
+			csvMth = title.split(' ')[0][:3]
 			csvMth = csvMth.upper()
 			csvMth = convert_mth_strings(csvMth);
 			filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
