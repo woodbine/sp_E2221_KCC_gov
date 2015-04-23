@@ -36,7 +36,7 @@ for header in headers:
 		url = fileLink['href']
 		if '.csv' in url:
 			print url
-			#parsed_link = urlparse.urlsplit(url.encode('utf8'))
+			parsed_link = urlparse.urlsplit(url.encode('utf8'))
 			parsed_link = parsed_link._replace(path=urllib.quote(parsed_link.path))
 			encoded_link = parsed_link.geturl()
 			title = encoded_link.split('/')[-1].replace('.csv','')
