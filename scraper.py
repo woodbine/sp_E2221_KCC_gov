@@ -29,9 +29,9 @@ headers = soup.findAll('h3')
 
 for header in headers:
 	title = header.text
-	# url = header.next_element.get("href")
+	url = header.next_element.next_element.get("href")
 	print title
-	# print url
+	print url
 	'''
 	url = link['href']
 	if '.csv' in url:
