@@ -25,11 +25,12 @@ html = urllib2.urlopen(url)
 soup = BeautifulSoup(html)
 
 # find all entries with the required class
-headers = soup.findAll('h3')
+block = soup.find('div',{'class':'large-12 column content-text'})
+headers = block.findAll('h3')
 
 for header in headers:
 	title = header.text
-	url = header.next_element.next_element.get("href")
+	url = block.header.next_element.next_element.get("href")
 	print title
 	print url
 	'''
