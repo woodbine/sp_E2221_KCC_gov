@@ -30,12 +30,12 @@ headers = block.findAll('h3')
 
 for header in headers:
 	title = header.text
+	print title
 	ns = header.find_next_sibling('p')
 	fileLinks = ns.findAll('a', href=True)
 	for fileLink in fileLinks:
 		url = fileLink['href']
 		if '.csv' in url:
-			print url
 			parsed_link = urlparse.urlsplit(url.encode('utf8'))
 			parsed_link = parsed_link._replace(path=urllib.quote(parsed_link.path))
 			encoded_link = parsed_link.geturl()
