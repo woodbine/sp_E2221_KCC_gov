@@ -39,10 +39,9 @@ for header in headers:
 			parsed_link = urlparse.urlsplit(url.encode('utf8'))
 			parsed_link = parsed_link._replace(path=urllib.quote(parsed_link.path))
 			encoded_link = parsed_link.geturl()
-			title = encoded_link.split('/')[-1].replace('.csv','')
 			# create the right strings for the new filename
-			csvYr = title.split('-')[2]
-			csvMth = title.split('-')[1][:3]
+			csvYr = title.split(' ')[2]
+			csvMth = title.split(' ')[1][:3]
 			csvMth = csvMth.upper()
 			csvMth = convert_mth_strings(csvMth);
 			filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
