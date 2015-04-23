@@ -31,26 +31,21 @@ headers = block.findAll('h3')
 for header in headers:
 	title = header.text
 	ns = header.find_next_sibling('p')
-	print ns
-	'''
-	url = block.header.next_element.next_element.get("href")
-	print title
-	print url
-	
-	url = link['href']
-	if '.csv' in url:
-		print url
-		#parsed_link = urlparse.urlsplit(url.encode('utf8'))
-		parsed_link = parsed_link._replace(path=urllib.quote(parsed_link.path))
-		encoded_link = parsed_link.geturl()
-		title = encoded_link.split('/')[-1].replace('.csv','')
-		# create the right strings for the new filename
-		csvYr = title.split('-')[2]
-		csvMth = title.split('-')[1][:3]
-		csvMth = csvMth.upper()
-		csvMth = convert_mth_strings(csvMth);
-		filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
-		todays_date = str(datetime.now())
-		scraperwiki.sqlite.save(unique_keys=['l'], data={"l": url, "f": filename, "d": todays_date })
-		print filename
-	'''
+	fileLinks = ns.findAll('a', href=True)
+	for fileLink in fileLinks:
+		url = fileLink['href']
+		if '.csv' in url:
+			print url
+			#parsed_link = urlparse.urlsplit(url.encode('utf8'))
+			parsed_link = parsed_link._replace(path=urllib.quote(parsed_link.path))
+			encoded_link = parsed_link.geturl()
+			title = encoded_link.split('/')[-1].replace('.csv','')
+			# create the right strings for the new filename
+			csvYr = title.split('-')[2]
+			csvMth = title.split('-')[1][:3]
+			csvMth = csvMth.upper()
+			csvMth = convert_mth_strings(csvMth);
+			filename = entity_id + "_" + csvYr + "_" + csvMth + ".csv"
+			todays_date = str(datetime.now())
+			scraperwiki.sqlite.save(unique_keys=['l'], data={"l": url, "f": filename, "d": todays_date })
+			print filename
